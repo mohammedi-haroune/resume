@@ -11,15 +11,15 @@
 %
 % IMPORTANT: THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
 %
-% 
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
+%
 % TODO:
 % 1. Figure out a smoother way for the document to flow onto the next page.
-% 3. Add more icon options 
+% 3. Add more icon options
 % 4. Fix hacky left alignment on contact line
 % 5. Remove Hacky fix for awkward extra vertical space
-% 
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % CHANGELOG:
@@ -45,7 +45,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\namesection{Haroune}{Mohammedi}{Mid-Level Software Engineer - Data Engineer}{\contactline{\href{https://www.home.me}{homepage.com}}{\href{https://www.github.com/sansquoi}{sansquoi}}{\href{https://www.linkedin.com/}{li-username}}{\href{mailto:first.last@mail.com}{first.last@email.com}}{\href{tel:+1999999999}{9999999999}}}
+
+\namesection{Haroune}{Mohammedi}{Mid-Level Software Engineer - Data Engineer\hfill\smash{\includegraphics[width=3cm]{me.jpg}}}{\small\contactline{\href{https://www.mazumder.me}{mazumder.me}}{\href{https://www.github.com/mohammedi-haroune}{mohammedi-haroune}}{\href{https://www.linkedin.com/in/haroune-mohammedi-3b3836170/}{haroune-mohammedi}}{\href{mailto:mohammedi.haroun@gmail.com}{mohammedi.haroun@gmail.com}}{\href{tel:+213698056800}{+213698056800}}}
 
 % \namesection{Firstname}{Lastname}{Full Stack Software Engineer}{\contactline{\href{https://www.mazumder.me}{mazumder.me}}{\href{https://www.github.com/sansquoi}{sansquoi}}{\href{https://www.linkedin.com/mazumders}{mazumders}}{\href{mailto:shubham.mazumder@gmail.com}{first.last@email.com}}{\href{tel:+1999999999}{9999999999}}}
 
@@ -55,7 +56,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{minipage}[t]{0.70\textwidth} 
+\begin{minipage}[t]{0.70\textwidth}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,36 +64,45 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Experience}
-\runsubsection{Weyland Yutani Industries}
-\descript{| Program Manager}
-\location{May 2021 – Current | Tokyo, Japan}
+
+\runsubsection{BigMama Technologies}
+\descript{| Software Engineer (Python) }
+\location{July 2019 – Present | Algiers, Algeria}
 \vspace{\topsep} % Hacky fix for awkward extra vertical space
 \begin{tightemize}
 \sectionsep
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper venenatis nisi at suscipit. Vestibulum vel odio in diam ultrices posuere. Cras suscipit faucibus ullamcorper.
-\item Ut consectetur tempus tincidunt. Curabitur in felis et leo elementum facilisis at non metus. Vestibulum et ullamcorper augue, nec accumsan tellus. \item Cras posuere in nunc vel sagittis. Aliquam aliquet non orci id pellentesque. Nulla gravida lectus quis tellus rhoncus rhoncus.  
+\item Core developper of https://iko.ai, a machine learning platform that offers real-time collaborative notebooks to train, track, package, deploy, and monitor machine learning models.
+\item Analyze requirements then desing and build software to solve the problem.
+\item Compare open-source solutions, synthesiz, the integrate the best solution of our needs.
+\item Aquire a business oriented perspective of Softawre Engineering and leart to put value ahead of implementation details
+\item Communicate ideas effectively in Gitlab issues, work on a fully remote environment for more than a year
+\item Backend developpement with Flask
+\item Write Python applications that deploy workloads in Kuberentes
 \end{tightemize}
 \sectionsep
 
-\runsubsection{Tessier-Ashpoole S.A.}
-\descript{| Software Developer }
-\location{July 2016 – March 2019 | Villa Straylight, U.S.}
+\runsubsection{BigMama Technologies}
+\descript{| Data Engineer (Scala) }
+\location{September 2017 – Juin 2019 | Algiers, Algeria}
 \begin{tightemize}
 \sectionsep
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper venenatis nisi at suscipit. Vestibulum vel odio in diam ultrices posuere. Cras suscipit faucibus ullamcorper.
-\item Ut consectetur tempus tincidunt. Curabitur in felis et leo elementum facilisis at non metus. Vestibulum et ullamcorper augue, nec accumsan tellus.
-\item Cras posuere in nunc vel sagittis. Aliquam aliquet non orci id pellentesque. Nulla gravida lectus quis tellus rhoncus rhoncus.
+\item Built and deployed a data-intensive application on top off akka, spark, kafka, elasticsearch and firebase, focusing on high-availability, fault
+tolerance, and scalability.
+\item Developed an internal sdk using scala for integrating different dynamic parts of our stack (firebase, kafka, akka ..ect), focusing on maintenabily
+and extensiblity
+\item Contributed to the design of many complex applications based on actor model and designed to be distrubuted, highly-scalable and fault-tolent.
+\item Provisioned Ansible recipes for internal infromation systems setup (Gitlab, Apt Mirror, SFTP, 2FA Authentitcation
 \end{tightemize}
 \sectionsep
 
-\runsubsection{LexCorp}
-\descript{| Software Developer }
-\location{July 2012 – March 2016 | Metropolis}
+\runsubsection{IB-Network}
+\descript{| Software Engineer Intern }
+\location{May 2016 - July 2016 | Algiers, Algeria}
 \begin{tightemize}
 \sectionsep
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper venenatis nisi at suscipit. Vestibulum vel odio in diam ultrices posuere. Cras suscipit faucibus ullamcorper.
-\item Ut consectetur tempus tincidunt. Curabitur in felis et leo elementum facilisis at non metus. Vestibulum et ullamcorper augue, nec accumsan tellus.
- rhoncus.
+\item Desinged and Build a management application
+\item Working under a responsable, manage deadlines.
+\item Getting my hands on how clients should be handled.
 \end{tightemize}
 \sectionsep
 
@@ -103,21 +113,21 @@
 
 \section{Projects}
 
-\runsubsection{Chess Engine}
-\descript{| C++}
-\location{2018}
+\runsubsection{Domain Specific Language for Raisnoning Systems}
+\descript{| Scala}
+\location{2018 | University project}
 \begin{tightemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper venenatis nisi at suscipit. Vestibulum vel odio in diam ultrices posuere. Cras suscipit faucibus ullamcorper.
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper venenatis nisi at suscipit.
+\item Fulfill my curiosity and explore how to make DLSs in Scala
 \end{tightemize}
 \sectionsep
 
-\runsubsection{Speech-enabled Chatbot}
-\descript{| C\#, Microsoft Bot Framework}
-\location{2018}
+\runsubsection{Video player controlled by hand gestures}
+\descript{| Scala, Akka}
+\location{2018 | University project}
 \begin{tightemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper venenatis nisi at suscipit. Vestibulum vel odio in diam ultrices posuere. Cras suscipit faucibus ullamcorper. 
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper venenatis nisi at suscipit.
+\item Asynchrous and recative JavaFx based app
+\item Actor model architecture using Akka and Akka remote
+\item Hand gesture detection neural network model trained with Keras
 \end{tightemize}
 \sectionsep
 
@@ -125,11 +135,9 @@
 %     AWARDS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \section{Awards} 
+% \section{Awards}
 % \begin{tabular}{rll}
-% 2020	     & Finalist & Lorem Ipsum\\
-% 2018	     & $2^{nd}$ & Dolor Sit Amet\\
-% 2015	     & Finalist  & Cras posuere\\
+% 2018	     & Winner, Algerian Collegiate Programming Contest (ALCPC)\\
 % \\
 % \end{tabular}
 % \sectionsep
@@ -139,9 +147,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\end{minipage} 
+\end{minipage}
 \hfill
-\begin{minipage}[t]{0.25\textwidth} 
+\begin{minipage}[t]{0.25\textwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     SKILLS
@@ -151,23 +159,23 @@
 \subsection{Programming}
 \sectionsep
 \location{Proficient:}
-C\# \textbullet{} C \textbullet{} JavaScript \textbullet{} Python    \\ SQL \textbullet{} CSS \textbullet{} HTML \textbullet{} \\
+Python \textbullet{} Flask  \\
 \sectionsep
 \location{Experienced:}
-Python \textbullet{} \LaTeX\ \textbullet{}  C++  \\
+Scala \textbullet{} Akka \textbullet{}  Cats \textbullet{} HTML/CSS/JS  \\
 \sectionsep
 \location{Familiar:}
-Java \textbullet{}  Shell \textbullet{} Assembly \\
+TypeScript \textbullet{}  Shell \textbullet{} Vuejs \textbullet{} Spark \\
 \sectionsep
 \sectionsep
-\subsection{Libraries/Frameworks}
-\sectionsep
-jQuery \textbullet{} Node.js \textbullet{} Jekyll \textbullet{} React \\
-\sectionsep
+% \subsection{Libraries/Frameworks}
+% \sectionsep
+% Akka \textbullet{} cats \textbullet{} Flask \textbullet{} Vuejs \\
+% \sectionsep
 \sectionsep
 \subsection{Tools/Platforms}
 \sectionsep
-Git \textbullet{} Gulp \textbullet{} Webpack \textbullet{} Heroku    \\ Wordpress \textbullet{} Docker \\
+Git \textbullet{} Docker \textbullet{} Kubernetes \\
 
 \sectionsep
 
@@ -175,56 +183,73 @@ Git \textbullet{} Gulp \textbullet{} Webpack \textbullet{} Heroku    \\ Wordpres
 %     EDUCATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Education} 
-\subsection{University of Utah}
+\section{Education}
+\subsection{University of Houari Boumedien Bab Ezzouar}
+\descript{PhD in Computer Science}
+\location{Sep 2019 - Present | Algiers, Algeria}
+Data science, Multicloud \\
+% \location{ Cum. GPA: 3.85 / 4.0 }
+
+\subsection{University of Houari Boumedien Bab Ezzouar}
 \descript{Master's in Computer Science}
-\location{Jan 2021 - Present | SLC, Utah}
-School of Computing \\
-\location{ Cum. GPA: 3.85 / 4.0 }
+\location{Sep 2017 - June 2019 | Algiers, Algeria}
+% School of Computing \\
+% \location{ Cum. GPA: 3.85 / 4.0 }
 
 \sectionsep
-\subsection{University of Oregon}
-\descript{Bachelor's in Computer Science 
+\subsection{University of Houari Boumedien Bab Ezzouar}
+\descript{Bachelor's in Computer Science
 \\and Engineering}
-\location{May 2016 | Corvallis, OR}
-School of Computing \\
-\location{ Cum. GPA: 3.7 / 4.0 }
+\location{Sep 2014 - June 2017 | Algiers, Algeria}
+% School of Computing \\
+% \location{ Cum. GPA: 3.7 / 4.0 }
 \sectionsep
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %     REFERENCES
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{References} 
-\href{https://www.linkedin.com/company/john-doe/}{\textbf{John Doe}, Senior Software Developer, Tyrell Corp}
+\section{References}
+
+\href{https://www.linkedin.com/in/pr-youcef-aklouf-08485729/}{\textbf{Pr. Youcef Aklouf}}, Professor at USTHB | R\&D Manager at KBMC consulting, France
+\\
 \begingroup
 \setbox0=\hbox{
-\includegraphics[scale=0.1,trim={0 1cm 0cm 0cm}]{icons/main/mail.png}\hspace{0.3cm} john.doe@email.com
+\includegraphics[scale=0.1,trim={0 1cm 0cm 0cm}]{icons/main/mail.png}\hspace{0.3cm} yaklouf@yahoo.fr
 }
 \parbox{\wd0}{\box0}
 \endgroup
-\begingroup
-\setbox0=\hbox{
-\includegraphics[scale=0.1,trim={0 1.25cm -0.4cm 0cm}]{icons/main/phone.png}\hspace{0.3cm}+19999999999
-}
-\parbox{\wd0}{\box0}\endgroup
-\\
+
 \sectionsep
-\href{https://www.linkedin.com/company/john-doe/}{\textbf{Jane Doe}}, Senior Software Developer, Primatech 
-\\
+\href{https://www.linkedin.com/in/adlane-kadri-788b66138/}{\textbf{Adlane Kadri}, Software Engineer, Innoscape, France}
 \begingroup
 \setbox0=\hbox{
-\includegraphics[scale=0.1,trim={0 1cm 0cm 0cm}]{icons/main/mail.png}\hspace{0.3cm} jane.doe@email.com
+\includegraphics[scale=0.1,trim={0 1cm 0cm 0cm}]{icons/main/mail.png}\hspace{0.3cm} adlan68@live.fr
 }
 \parbox{\wd0}{\box0}
 \endgroup
-\begingroup
-\setbox0=\hbox{
-\includegraphics[scale=0.1,trim={0 1.25cm -0.4cm 0cm}]{icons/main/phone.png}\hspace{0.3cm}+19999999999
-}
-\parbox{\wd0}{\box0}\endgroup
+% \begingroup
+% \setbox0=\hbox{
+% \includegraphics[scale=0.1,trim={0 1.25cm -0.4cm 0cm}]{icons/main/phone.png}\hspace{0.3cm}+19999999999
+% }
+% \parbox{\wd0}{\box0}\endgroup
 \\
 
+\sectionsep
+\href{https://www.linkedin.com/in/yahiabattach/}{\textbf{Yahia Bettach}}, Software Developer, Resel, Saudi Arabie
+\\
+\begingroup
+\setbox0=\hbox{
+\includegraphics[scale=0.1,trim={0 1cm 0cm 0cm}]{icons/main/mail.png}\hspace{0.3cm} battachyahia@hotmail.com
+}
+\parbox{\wd0}{\box0}
+\endgroup
+% \begingroup
+% \setbox0=\hbox{
+% \includegraphics[scale=0.1,trim={0 1.25cm -0.4cm 0cm}]{icons/main/phone.png}\hspace{0.3cm}+19999999999
+% }
+% \parbox{\wd0}{\box0}\endgroup
+\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     COURSEWORK
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -232,9 +257,9 @@ School of Computing \\
 % \section{Coursework}
 
 % \subsection{Graduate}
-% Graduate Algorithms \textbullet{}\\ 
-% Advanced Computer Architecture \textbullet{}\\ 
-% Operating Systems \textbullet{}\\ 
+% Graduate Algorithms \textbullet{}\\
+% Advanced Computer Architecture \textbullet{}\\
+% Operating Systems \textbullet{}\\
 % Artificial Intelligence \textbullet{}\\
 % Visualization For Scientific Data \\
 % \sectionsep
@@ -247,6 +272,5 @@ School of Computing \\
 % Scripting Languages and Web Tech \textbullet{}\\
 % Software Engineering \\
 
-\end{minipage} 
+\end{minipage}
 \end{document}  \documentclass[]{article}
-
