@@ -35,9 +35,12 @@
 
 \documentclass[]{plushcv}
 \usepackage{fancyhdr}
+\usepackage{enumitem}
 \pagestyle{fancy}
 \fancyhf{}
 \begin{document}
+
+\setlist[itemize]{leftmargin=*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -45,9 +48,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+% \hfill\smash{\includegraphics[width=2.5cm]{me.jpg}}
 \small {
-\namesection{Haroune}{Mohammedi}{Software Engineer - Data Engineer\hfill\smash{\includegraphics[width=2.5cm]{me.jpg}}}{\small\contactline{\href{https://www.mazumder.me}{mazumder.me}}{\href{https://www.github.com/mohammedi-haroune}{mohammedi-haroune}}{\href{https://www.linkedin.com/in/haroune-mohammedi-3b3836170/}{haroune-mohammedi}}{\href{mailto:mohammedi.haroun@gmail.com}{mohammedi.haroun@gmail.com}}{\href{tel:+213698056800}{+213698056800}}}
+\namesection{Haroune}{Mohammedi}{Software Engineer - MLOps and Data Engineer}{\small\contactline{Paris}{\href{https://www.github.com/mohammedi-haroune}{haroune}}{\href{https://www.linkedin.com/in/haroune-mohammedi-3b3836170/}{haroune}}{\href{mailto:mohammedi.haroun@gmail.com}{mohammedi.haroun@gmail.com}}{\href{tel:+33626850080}{+33626850080}}}
 }
 
 % \namesection{Firstname}{Lastname}{Full Stack Software Engineer}{\contactline{\href{https://www.mazumder.me}{mazumder.me}}{\href{https://www.github.com/sansquoi}{sansquoi}}{\href{https://www.linkedin.com/mazumders}{mazumders}}{\href{mailto:shubham.mazumder@gmail.com}{first.last@email.com}}{\href{tel:+1999999999}{9999999999}}}
@@ -67,9 +70,22 @@
 
 \section{Experience}
 
+\runsubsection{Quadratic}
+\descript{| Software Engineer }
+\location{May 2022 – Present | Paris, France}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\sectionsep
+\item Write unit tests for a Smart Contract DAO based on ZKRollUp Layer 2 Ethereum
+\item Setup a private Git server and write the docs for both admins and team members
+\end{tightemize}
+\sectionsep
+\sectionsep
+
+
 \runsubsection{BigMama Technologies}
 \descript{| Software Engineer }
-\location{July 2019 – Present | Algiers, Algeria}
+\location{July 2019 – April 2022 | Algiers, Algeria}
 \vspace{\topsep} % Hacky fix for awkward extra vertical space
 \begin{tightemize}
 \sectionsep
@@ -80,9 +96,9 @@
     \item Backend development with Flask, focusing on extensibility and maintainability.
 \end{itemize}
 \item Analyze requirements, design and build software to solve the problem.
-\item Compare open-source solutions, synthesize, and integrate the best solution of our needs.
+\item Compare open-source solutions, synthesize, and integrate the best solution.
 \item Acquire a business oriented perspective of Software Engineering and learn to put value ahead of implementation details.
-\item Communicate ideas effectively in Gitlab issues, work on a fully remote environment for more than a year.
+\item Strong communication skills, work on a fully remote environment for more than a year.
 \end{tightemize}
 \sectionsep
 \sectionsep
@@ -105,12 +121,10 @@ and extensibility.
 \runsubsection{IB-Network}
 \descript{| Software Engineer Intern }
 \location{May 2016 - July 2016 | Algiers, Algeria}
-\begin{tightemize}
+% \begin{tightemize}
 \sectionsep
-\item Designed and built a management application.
-\item Worked in a team with deadlines.
-\item Got my hands on how clients should be handled.
-\end{tightemize}
+Designed and built a management application. \textbullet{} Worked in a team with deadlines. \textbullet{} Got my hands on how clients should be handled.
+% \end{tightemize}
 \sectionsep
 
 
@@ -190,13 +204,17 @@ Scala/Akka \textbullet{} HTML/CSS/JS \textbullet SQL  \\
 \location{Familiar:}
 Java \textbullet{}  Shell \textbullet{} Vuejs \textbullet{} Kafka \textbullet{} Spark \\
 \sectionsep
+
 % \subsection{Libraries/Frameworks}
 % \sectionsep
 % Akka \textbullet{} cats \textbullet{} Flask \textbullet{} Vuejs \\
 % \sectionsep
 
-\location{Tools/Platforms/OS:}
+\location{MLOps:}
+MLFlow \textbullet{} SelonCore \textbullet{} Jupyter \textbullet{} Istio \textbullet{} Envoy \\
 \sectionsep
+
+\location{Tools/Platforms/OS:}
 Linux \textbullet{} Latex \textbullet{} Git \textbullet{} Docker \textbullet{} Kubernetes \textbullet{} GCP \\
 
 \sectionsep
