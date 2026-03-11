@@ -168,11 +168,12 @@ Last Updated on \today
 \newcommand{\namesection}[4]{%
 \noindent
 \color{title}\RaggedRight
-\fontsize{30pt}{40pt}\fontspec[Path = \pathtitlefont]{\firstnamefont}\selectfont #1\hspace{0.25em}\fontspec[Path = \pathtitlefont]{\secondnamefont}\selectfont #2%
+\fontsize{30pt}{40pt}\fontspec[Path = \pathtitlefont]{\firstnamefont}\selectfont #1\hspace{0.25em}\fontspec[Path = \pathtitlefont]{\secondnamefont}
+\selectfont #2%
 % small gap then position; lift slightly to align with name
 %hspace: horizonal gap between name and position; raisebox: vertical adjustment to align with name
 % \hspace{0.3em}{\color{primary}\raisebox{0.10em}[0pt][0pt]{\fontspec[Path = \pathtitlefont]{\titlefont}\fontsize{18pt}{18pt}\selectfont |#3}}%
-\hspace{0.3em}{\color{primary}\raisebox{0.05em}[0pt][0pt]{\fontspec[Path = \pathmonofont]{\monofontregular}\fontsize{18pt}{18pt}\bfseries |#3}}%
+\hspace{0.3em}{\color{primary}\raisebox{0.05em}[0pt][0pt]{\fontspec[Path = \pathmonofont]{\monofontregular}\fontsize{18pt}{18pt}\bfseries  |#3}}%
 \par
 \vspace{2pt}
 \noindent\RaggedRight{\color{primary}\fontspec[Path = \pathmonofont]{\monofont}\fontsize{10pt}{14pt}\selectfont #4}%
@@ -201,11 +202,11 @@ Last Updated on \today
 
 % Descriptors command
 \newcommand{\descript}[1]{
-\color{subheadings}\raggedright\scshape\fontspec[Path = \pathdescriptorfont]{\descriptorfont}\fontsize{\descriptorsize}{13pt}\selectfont {#1 \\} \normalfont}
+\color{subheadings}\raggedright\scshape\fontspec[Path = \pathdescriptorfont]{\descriptorfont}\fontsize{\descriptorsize}{13pt}\selectfont {#1} \normalfont}
 
 % Location command
 \newcommand{\location}[1]{
-\color{headings}\raggedright\fontspec[Path = \pathlocationfont]{\locationfont}\fontsize{\locationsize}{12pt}\selectfont {#1\\} \normalfont}
+\color{headings}\raggedright\fontspec[Path = \pathlocationfont]{\locationfont}\fontsize{\locationsize}{12pt}\selectfont {#1} \normalfont}
 
 %Contact Line
 \newcommand{\contactline}[5]{\begingroup
