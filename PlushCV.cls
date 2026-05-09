@@ -173,10 +173,10 @@ Last Updated on \today
 % small gap then position; lift slightly to align with name
 %hspace: horizonal gap between name and position; raisebox: vertical adjustment to align with name
 % \hspace{0.3em}{\color{primary}\raisebox{0.10em}[0pt][0pt]{\fontspec[Path = \pathtitlefont]{\titlefont}\fontsize{18pt}{18pt}\selectfont |#3}}%
-\hspace{0.3em}{\color{primary}\raisebox{0.05em}[0pt][0pt]{\fontspec[Path = \pathmonofont]{\monofontregular}\fontsize{18pt}{18pt}\bfseries  |#3}}%
+\hspace{0.3em}{\color{primary}\raisebox{0.00em}[0pt][0pt]{\fontspec[Path = \pathmonofont]{\monofontregular}\fontsize{18pt}{18pt}\bfseries    #3}}%
 \par
 \vspace{2pt}
-\noindent\RaggedRight{\color{primary}\fontspec[Path = \pathmonofont]{\monofont}\fontsize{10pt}{14pt}\selectfont #4}%
+\noindent\RaggedRight{\color{primary}\fontspec[Path = \pathmonofont]{\monofont}\fontsize{8pt}{10pt}\selectfont #4}%
 \vspace{2pt}
 \noindent\makebox[\linewidth]{\color{title}\rule{\paperwidth}{0pt}}%
 \vspace{-15pt}
@@ -209,14 +209,25 @@ Last Updated on \today
 \color{headings}\raggedright\fontspec[Path = \pathlocationfont]{\locationfont}\fontsize{\locationsize}{12pt}\selectfont {#1} \normalfont}
 
 %Contact Line
+% \newcommand{\contactline}[6]{\begingroup
+% \setbox0=\hbox{
+% \includegraphics[scale=0.23,trim={1.4cm 1.25cm -0.4cm 0cm}]{icons/main/github.png}{#2}\hspace{0.1cm}
+% \includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/linkedin.png}{#3}\hspace{0.1cm}
+% \includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/mail.png}{#4}\hspace{0.1cm}
+% \includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/phone.png}{#5}\hspace{0.1cm}
+% \includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/website.png}{#6}\hspace{0.1cm}
+% \includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/home.png}{#1}
+% }\parbox{\wd0}{\box0}\endgroup}
+
+%Contact Line
 \newcommand{\contactline}[6]{\begingroup
 \setbox0=\hbox{
-\includegraphics[scale=0.23,trim={1.4cm 1.25cm -0.4cm 0cm}]{icons/main/github.png}{#2}\hspace{0.3cm}
-\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/linkedin.png}{#3}\hspace{0.3cm}
-\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/mail.png}{#4}\hspace{0.3cm}
-\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/phone.png}{#5}\hspace{0.3cm}
-\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/homesquare.png}{#6}\hspace{0.3cm}
-\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/home.png}{#1}
+\includegraphics[scale=0.23,trim={1.4cm 1.25cm -0.4cm 0cm}]{icons/main/github.png}{#2}
+\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/linkedin.png}{#3}
+\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/mail.png}{#4}
+\includegraphics[scale=0.21,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/phone.png}{#5}
+\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/website.png}{#6}
+\includegraphics[scale=0.21,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/home.png}{#1}
 }\parbox{\wd0}{\box0}\endgroup}
 
 %Inline Centered Logo
