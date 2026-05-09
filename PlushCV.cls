@@ -127,7 +127,7 @@
 %Used for company name and sub-skills
 \def \pathsubheadingfont {\pathtitlefont}
 \def \subheadingfont {\titlefont}
-\def \subheadingsize {12}
+\def \subheadingsize {11}
 
 %Main Job Descriptor and Location Font Definitions
 %Used for company name and sub-skills
