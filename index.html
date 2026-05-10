@@ -195,6 +195,8 @@
         z-index: 2;
         width: 100%;
         max-width: 920px;
+        margin: 0 auto;
+        text-align: center;
       }
       .hero-label {
         font-family: "IBM Plex Mono", monospace;
@@ -205,6 +207,7 @@
         margin-bottom: 1.5rem;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 0.75rem;
       }
       .hero-label::before {
@@ -216,11 +219,10 @@
       }
       .hero-top {
         display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 1rem;
-        flex-wrap: wrap;
-        margin-bottom: 0.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.1rem;
+        margin-bottom: 0.75rem;
       }
       .hero-name {
         font-family: "Syne", sans-serif;
@@ -234,9 +236,9 @@
       }
       .hero-socials {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
+        justify-content: center;
         gap: 0.5rem;
-        padding-bottom: 0.35rem;
       }
       .social-btn {
         display: flex;
@@ -286,6 +288,7 @@
       .hero-stats {
         display: flex;
         align-items: stretch;
+        justify-content: center;
         flex-wrap: wrap;
         row-gap: 0.75rem;
         margin-bottom: 1.75rem;
@@ -326,11 +329,12 @@
         line-height: 1.8;
         color: rgba(238, 238, 245, 0.75);
         max-width: 620px;
-        margin-bottom: 2rem;
+        margin: 0 auto 2rem;
       }
       .hero-stack {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 0.38rem;
         margin-bottom: 2.25rem;
       }
@@ -360,6 +364,7 @@
       }
       .hero-ctas {
         display: flex;
+        justify-content: center;
         gap: 0.75rem;
         flex-wrap: wrap;
       }
@@ -830,12 +835,7 @@
           padding: 5.5rem 1.25rem 4rem;
         }
         .hero-top {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.65rem;
-        }
-        .hero-socials {
-          padding-bottom: 0;
+          gap: 0.9rem;
         }
         .timeline {
           padding-left: 1.25rem;
