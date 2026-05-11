@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repo holds two parallel deliverables for Haroune Mohammedi's personal resume:
 
-1. **`index.html`** — the static personal site served at `haroune.me` (CNAME points to `haroune.me`). Single self-contained file with inline CSS and inline JS — no build step, no bundler, no framework.
+1. **`site/`** — the static personal site served at `haroune.me`. `site/index.html` + `site/css/styles.css` + `site/js/main.js`, plus `site/CNAME`. No build step, no bundler, no framework.
 2. **`haroune_mohammedi_resume.tex`** + **`PlushCV.cls`** — the printable one-page PDF resume, compiled with XeLaTeX.
 
 Both must stay in sync content-wise (roles, dates, bullets, stack), but they're edited independently — there is no shared source.
@@ -22,18 +22,20 @@ xelatex haroune_mohammedi_resume.tex
 Web site — no build. Preview locally with any static server, e.g.:
 
 ```sh
-python3 -m http.server 8000   # then open http://localhost:8000
+python3 -m http.server 8000 --directory site   # then open http://localhost:8000
 ```
 
-Deployment is via GitHub Pages on the `master` branch; pushing to `master` ships the site.
+Deployment is via GitHub Pages, driven by `.github/workflows/pages.yml`. The workflow uploads `site/` on every push to `master`. The repo's Pages source is set to "GitHub Actions" (not "Deploy from a branch").
 
-## `index.html` structure
+## `site/` structure
 
-It's ~1600 lines split into three regions: `<style>` (lines ~12–855), markup (lines ~859–1416), then `<script>` (lines ~1417–1625). Section IDs in order: `hero`, `about`, `experience`, `skills`, `projects`, `education`, `contact` — the nav and `IntersectionObserver` active-link logic depend on these IDs matching.
+Three files: markup in `site/index.html`, design tokens + layout in `site/css/styles.css`, canvas + scroll-spy in `site/js/main.js`. The HTML links to the CSS in `<head>` and to the JS at the end of `<body>` (DOM must be parsed before `main.js` runs — it queries `#pipeline-canvas` and `.fade-in` immediately).
 
-Design system lives in CSS custom properties on `:root` (lines ~20–31): `--bg`, `--surface`, `--orange` (#f97316), `--cyan` (#22d3ee). Orange = primary accent, cyan = secondary. Stick to these tokens instead of hard-coding hex.
+Section IDs in order: `hero`, `about`, `experience`, `skills`, `projects`, `education`, `contact` — the nav and `IntersectionObserver` active-link logic depend on these IDs matching.
 
-The animated background is a `<canvas id="pipeline-canvas">` driven by the first IIFE in the script block (nodes + flowing packets — "data pipeline" metaphor). It honors `prefers-reduced-motion` and downshifts node/packet counts on mobile (`(max-width: 768px)`).
+Design system lives in CSS custom properties on `:root` at the top of `site/css/styles.css`: `--bg`, `--surface`, `--orange` (#f97316), `--cyan` (#22d3ee). Orange = primary accent, cyan = secondary. Stick to these tokens instead of hard-coding hex.
+
+The animated background is a `<canvas id="pipeline-canvas">` driven by the first IIFE in `site/js/main.js` (nodes + flowing packets — "data pipeline" metaphor). It honors `prefers-reduced-motion` and downshifts node/packet counts on mobile (`(max-width: 768px)`).
 
 Fonts are loaded from Google Fonts: Syne (display), IBM Plex Sans (body), IBM Plex Mono (labels/nav).
 
