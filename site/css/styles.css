@@ -96,6 +96,19 @@ nav.scrolled .nav-name {
 .nav-links a.active {
   color: var(--orange);
 }
+.nav-links a.nav-cv {
+  padding: 0.45rem 0.95rem;
+  border: 1px solid var(--orange);
+  border-radius: 3px;
+  color: var(--orange);
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.nav-links a.nav-cv:hover {
+  background: var(--orange-dim);
+  color: var(--orange);
+}
 .hamburger {
   display: none;
   flex-direction: column;
@@ -170,6 +183,12 @@ nav.scrolled .nav-name {
     display: block;
     padding: 1rem 0;
     font-size: 0.9rem;
+  }
+  .nav-links a.nav-cv {
+    padding: 1rem 0;
+    border: none;
+    border-radius: 0;
+    color: var(--orange);
   }
 }
 
@@ -387,6 +406,22 @@ nav.scrolled .nav-name {
 .btn-secondary:hover {
   border-color: var(--orange);
   color: var(--orange);
+}
+.btn-cv-mobile {
+  display: none;
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.btn-cv-mobile:hover {
+  background: var(--orange-dim);
+}
+@media (max-width: 768px) {
+  .btn-cv-mobile {
+    display: inline-block;
+  }
 }
 
 /* scroll indicator */
