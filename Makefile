@@ -20,27 +20,28 @@ PDF_FR := haroune_mohammedi_cv_fr.pdf
 
 .PHONY: all site pdf pdf-en pdf-fr serve clean
 
-# `make site` runs the Node build. It will pick up any PDFs sitting at the
-# repo root (built by the pdf-* targets below) and copy them into dist/.
+# `make site` runs the Node build. It picks up any PDFs sitting at the
+# repo root (built by the pdf-* targets below) and copies them into dist/.
 site:
-	node build.js
+	node build.mjs
 
-# LaTeX intermediates (aux, log, etc.) go into .build/ — kept out of cv/ so
-# the source tree stays clean. The class file, fonts/, and icons/ are
-# resolved relative to $(ROOT) because that's the working directory at
-# compile time. -jobname controls the output filename so we end up with
-# the canonical "haroune_mohammedi_cv_<lang>.pdf" without a rename step.
+# LaTeX intermediates land in .build/ — kept outside cv/ so the source tree
+# stays clean. We compile from inside cv/ so that all asset paths in the
+# class file and .tex (icons/, fonts/) resolve relative to the cv/ dir,
+# making cv/ a self-contained LaTeX project. -jobname controls the output
+# filename so we end up with the canonical "haroune_mohammedi_cv_<lang>.pdf"
+# without an extra rename step.
 pdf-en:
 	@mkdir -p $(BUILD)
-	xelatex $(LATEX_OPTS) -output-directory=$(BUILD) -jobname=cv_en cv/resume_en.tex
-	@xelatex $(LATEX_OPTS) -output-directory=$(BUILD) -jobname=cv_en cv/resume_en.tex > /dev/null
+	cd cv && xelatex $(LATEX_OPTS) -output-directory=$(BUILD) -jobname=cv_en resume_en.tex
+	@cd cv && xelatex $(LATEX_OPTS) -output-directory=$(BUILD) -jobname=cv_en resume_en.tex > /dev/null
 	cp $(BUILD)/cv_en.pdf $(PDF_EN)
 	@echo "→ $(PDF_EN) ready"
 
 pdf-fr:
 	@mkdir -p $(BUILD)
-	xelatex $(LATEX_OPTS) -output-directory=$(BUILD) -jobname=cv_fr cv/resume_fr.tex
-	@xelatex $(LATEX_OPTS) -output-directory=$(BUILD) -jobname=cv_fr cv/resume_fr.tex > /dev/null
+	cd cv && xelatex $(LATEX_OPTS) -output-directory=$(BUILD) -jobname=cv_fr resume_fr.tex
+	@cd cv && xelatex $(LATEX_OPTS) -output-directory=$(BUILD) -jobname=cv_fr resume_fr.tex > /dev/null
 	cp $(BUILD)/cv_fr.pdf $(PDF_FR)
 	@echo "→ $(PDF_FR) ready"
 

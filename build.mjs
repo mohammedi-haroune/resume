@@ -2,7 +2,7 @@
 // Static-site build for haroune.me.
 //
 // Inputs:
-//   /locales/*.mjs       — one file per locale (en, fr, ar later)
+//   /site/locales/*.mjs  — one file per locale (en, fr, ar later)
 //   /site/template.mjs   — single render() function
 //   /site/css, /site/js  — shared assets
 //   /site/public         — static files copied verbatim (CNAME, robots, favicon…)
@@ -11,9 +11,9 @@
 // Output:
 //   /dist                — fully assembled site ready for GitHub Pages
 //
-// Adding a new locale is one step: drop a new file in /locales. The script
-// discovers locales, generates one HTML file per locale (English at root,
-// others under /<lang>/), and wires up hreflang + sitemap automatically.
+// Adding a new locale is one step: drop a new file in /site/locales. The
+// script discovers locales, generates one HTML file per locale (English at
+// root, others under /<lang>/), and wires up hreflang + sitemap automatically.
 
 import { readdir, mkdir, copyFile, writeFile, rm, stat } from "node:fs/promises";
 import { existsSync } from "node:fs";
@@ -22,8 +22,8 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = __dirname;
-const LOCALES_DIR = path.join(ROOT, "locales");
 const SITE_DIR = path.join(ROOT, "site");
+const LOCALES_DIR = path.join(SITE_DIR, "locales");
 const DIST = path.join(ROOT, "dist");
 const SITE_URL = "https://haroune.me";
 

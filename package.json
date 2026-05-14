@@ -1,0 +1,17 @@
+{
+  "name": "haroune-me",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Personal site and CV for Haroune Mohammedi — multilingual (en, fr), Arabic scaffolded.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "make serve",
+    "pdf": "make pdf",
+    "all": "make all",
+    "clean": "make clean"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

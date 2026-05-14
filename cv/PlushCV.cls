@@ -217,12 +217,12 @@
 % -----------------------------------------------------------------------------
 \newcommand{\contactline}[6]{\begingroup
 \setbox0=\hbox{
-\includegraphics[scale=0.23,trim={1.4cm 1.25cm -0.4cm 0cm}]{icons/main/website.png}{#6}
-\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/mail.png}{#4}
-\includegraphics[scale=0.21,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/phone.png}{#5}
-\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/github.png}{#2}
-\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/linkedin.png}{#3}
-\includegraphics[scale=0.21,trim={0cm 1.25cm -0.4cm 0cm}]{icons/main/home.png}{#1}
+\includegraphics[scale=0.23,trim={1.4cm 1.25cm -0.4cm 0cm}]{icons/website.png}{#6}
+\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/mail.png}{#4}
+\includegraphics[scale=0.21,trim={0cm 1.25cm -0.4cm 0cm}]{icons/phone.png}{#5}
+\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/github.png}{#2}
+\includegraphics[scale=0.23,trim={0cm 1.25cm -0.4cm 0cm}]{icons/linkedin.png}{#3}
+\includegraphics[scale=0.21,trim={0cm 1.25cm -0.4cm 0cm}]{icons/home.png}{#1}
 }\parbox{\wd0}{\box0}\endgroup}
 
 \newcommand{\vcenteredinclude}[2]{\begingroup

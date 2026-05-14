@@ -1,0 +1,31 @@
+haroune.me — personal site and CV for Haroune Mohammedi
+========================================================
+
+This repository contains a mix of forked open-source code and original
+personal content. Different parts have different licensing:
+
+1. LaTeX class file: cv/PlushCV.cls
+   Licensed under the Apache License 2.0 (see LICENSE).
+   Forked from PlushCV (https://github.com/sansquoi/PlushCV), itself a
+   fork of Deedy-Resume (https://github.com/deedy/Deedy-Resume).
+   The current file is substantially modified (multilingual support via
+   polyglossia, language class options, RTL/Arabic scaffolding).
+
+2. Bundled fonts: cv/fonts/
+   Each family ships under its own license — typically SIL Open Font
+   License 1.1 (Inter, Source Sans Pro, Office Code Pro). See the
+   per-family license files (where present) inside each directory.
+
+3. Icon set: cv/icons/
+   PNG icons from icons8.com (Carbon Copy style). Licensed for personal
+   use as bundled here; consult icons8.com for redistribution terms.
+
+4. Resume content and orchestration:
+   - cv/resume_en.tex, cv/resume_fr.tex
+   - site/template.mjs, site/css/, site/js/, site/locales/, site/public/
+   - build.mjs, Makefile, CLAUDE.md, README.md
+   - Generated PDFs (haroune_mohammedi_cv_*.pdf)
+   © Haroune Mohammedi — All rights reserved.
+   This is personal résumé material; please do not reuse without
+   permission. The build orchestration scripts may be referenced as
+   examples of multilingual static-site + LaTeX integration.
