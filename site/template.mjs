@@ -242,7 +242,7 @@ ${t.hero.stack
         <div class="hero-ctas">
           <a href="#experience" class="btn btn-primary">${t.hero.ctaPrimary}</a>
           <a
-            href="/${t.cvFile}"
+            href="${filePath(t.htmlLang, t.cvFile)}"
             target="_blank"
             class="btn btn-cv-mobile"
             >${t.hero.ctaCv}</a
