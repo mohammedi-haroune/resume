@@ -15,7 +15,7 @@ export default {
   htmlLang: "en",
   dir: "ltr",
   ogLocale: "en_US",
-  cvFile: "haroune_mohammedi_resume.pdf",
+  cvFile: "haroune_mohammedi_cv_en.pdf",
 
   meta: {
     title: "Haroune Mohammedi — Senior Data Engineer",

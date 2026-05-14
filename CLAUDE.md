@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This repo holds two parallel multilingual deliverables for Haroune Mohammedi's personal resume:
 
 1. **Static site** served at `haroune.me`. Locale data lives in `locales/{en,fr}.mjs`; one shared template in `site/template.mjs` renders both pages. `build.js` (zero-dep Node) emits `dist/index.html` (English) and `dist/<lang>/index.html` (e.g. `dist/fr/index.html`).
-2. **Printable PDF CV** built with XeLaTeX. Layout and typography in `PlushCV.cls` at the repo root (shared); per-locale content in `cv/en/resume.tex` and `cv/fr/resume.tex`.
+2. **Printable PDF CV** built with XeLaTeX. Layout and typography in `PlushCV.cls` at the repo root (shared); per-locale content in `cv/resume_en.tex` and `cv/resume_fr.tex`.
 
 The two deliverables intentionally have **separate sources** (the website covers more material than the one-page PDF), but they share content conventions and must stay in sync on the load-bearing facts (roles, dates, headline metrics, stack).
 
@@ -23,17 +23,17 @@ Adding a new locale to the site is a single step: drop `locales/<lang>.mjs` and 
 
 ```sh
 make site         # build the static site into dist/
-make pdf-en       # compile dist English PDF → haroune_mohammedi_resume.pdf
-make pdf-fr       # compile dist French PDF  → haroune_mohammedi_cv_fr.pdf
+make pdf-en       # compile English PDF → haroune_mohammedi_cv_en.pdf
+make pdf-fr       # compile French PDF  → haroune_mohammedi_cv_fr.pdf
 make pdf          # both PDFs
 make all          # pdfs + site (full reproducible build)
 make serve        # build, then serve dist/ on http://localhost:8000
-make clean        # remove dist/ and LaTeX intermediates
+make clean        # remove dist/ and .build/ LaTeX intermediates
 ```
 
 Preview the site locally with `make serve` (the site uses relative asset paths, so any static server rooted at `dist/` works — `python3 -m http.server 8000 --directory dist` is equivalent).
 
-PDFs are built locally and **committed to the repo root** (`haroune_mohammedi_resume.pdf`, `haroune_mohammedi_cv_fr.pdf`). `build.js` picks them up from there and stages them into `dist/`. Rebuild before pushing if the `.tex` sources changed: `make pdf`.
+PDFs are built locally and **committed to the repo root** (`haroune_mohammedi_cv_en.pdf`, `haroune_mohammedi_cv_fr.pdf`). `build.js` picks them up from there and stages them into `dist/`. Rebuild before pushing if the `.tex` sources changed: `make pdf`.
 
 ## Deployment
 
@@ -97,17 +97,17 @@ Font swaps for Arabic are scaffolded via `[lang="ar"]` overrides on the font tok
 ```
 PlushCV.cls               # shared class — typography, layout, macros (no strings)
 cv/
-├── en/resume.tex         # English content
-└── fr/resume.tex         # French content
+├── resume_en.tex         # English content
+└── resume_fr.tex         # French content
 ```
 
-The class file lives at the repo root (not `cv/`) so XeLaTeX finds it via the default class-search path when compiling from the repo root.
+The class file lives at the repo root (not `cv/`) so XeLaTeX finds it via the default class-search path when compiling from the repo root. LaTeX intermediates (aux, log, …) go to a top-level `.build/` directory (gitignored), keeping `cv/` purely source.
 
 Engine: **XeLaTeX** (required for `fontspec` + `polyglossia`).
 
 Language is selected via the class option: `\documentclass[english]{plushcv}`, `\documentclass[french]{plushcv}`, `\documentclass[arabic]{plushcv}`. polyglossia handles month names, quotation marks, and uppercase casing of accented letters (`\MakeUppercase` correctly handles É, È, etc.). `\today` follows the document language.
 
-Each compile must run **from the repo root** so the class file, `fonts/`, and `icons/` resolve correctly — the Makefile targets do this. Per-locale output goes to `cv/<lang>/resume.pdf`, then is copied to the canonical `haroune_mohammedi_resume.pdf` (en) or `haroune_mohammedi_cv_fr.pdf` (fr) at the repo root.
+Each compile must run **from the repo root** so the class file, `fonts/`, and `icons/` resolve correctly — the Makefile targets do this. Intermediates land in `.build/` and the final PDFs are copied to `haroune_mohammedi_cv_en.pdf` / `haroune_mohammedi_cv_fr.pdf` at the repo root.
 
 **One-page constraint:** the PDF must fit on one page. French is typographically ~15–20% denser than English, so the French source uses tighter phrasing and fewer bullets per role. When adding content, trim elsewhere. Overflow silently spills onto page 2 with broken alignment.
 
@@ -125,11 +125,11 @@ The resume leads with **Senior Data Engineer** positioning. MLOps experience is 
 ## Adding Arabic (future)
 
 1. **Site:** create `locales/ar.mjs` with `htmlLang: "ar"` and `dir: "rtl"`. Add `<link>` tags in `site/template.mjs` to load Cairo + IBM Plex Sans Arabic from Google Fonts (the CSS tokens already point at them under `[lang="ar"]`). `build.js` picks it up automatically.
-2. **PDF:** drop an Arabic OpenType font (e.g., Amiri, Noto Naskh Arabic) into `fonts/`, uncomment the `\arabicfont` scaffold in `cv/PlushCV.cls`, and flip the minipage column order + replace `\raggedright` with `\raggedleft` in a new `cv/ar/resume.tex`.
+2. **PDF:** drop an Arabic OpenType font (e.g., Amiri, Noto Naskh Arabic) into `fonts/`, uncomment the `\arabicfont` scaffold in `PlushCV.cls`, and flip the minipage column order + replace `\raggedright` with `\raggedleft` in a new `cv/resume_ar.tex`.
 3. **CSS:** review `writing-mode: sideways-rl` on `.scroll-label` and the `.tl-dot` transform offset — both are scaffolded but warrant visual verification.
 
 ## Notes
 
-- `.aux`, `.log`, `.out`, `.synctex.gz`, `cv/{en,fr}/resume.pdf`, and `dist/` are gitignored. The canonical PDFs at the repo root are committed.
+- `.aux`, `.log`, `.out`, `.synctex.gz`, `.build/`, and `dist/` are gitignored. The canonical PDFs at the repo root (`haroune_mohammedi_cv_en.pdf`, `haroune_mohammedi_cv_fr.pdf`) are committed.
 - `me.jpg` is kept for an optional photo variant referenced from a commented-out `\includegraphics` in the `.tex` sources.
 - The `LICENSE` covers the PlushCV / Deedy-Resume fork; `README.md` is the public-facing project description.

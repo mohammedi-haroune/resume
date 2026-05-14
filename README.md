@@ -1,88 +1,42 @@
-PlushCV
-=========================
+# haroune.me
 
-A **one-page**, **two asymmetric column** resume template in **XeTeX** that caters particularly to  Computer Science students.
-Has a bunch of font options as listed in Preview. Inspired by [**deedy-resume**](https://github.com/deedy/Deedy-Resume). 
+Source for Haroune Mohammedi's personal site ([haroune.me](https://haroune.me)) and printable CV — both shipped in **English** and **French**, with Arabic scaffolded.
 
-Easiest way to create your own is to use the Overleaf template linked below to edit and compile. 
+## What's in here
 
-It is licensed under the Apache License 2.0.
+| Deliverable        | Source                                        | Output                                                     |
+| ------------------ | --------------------------------------------- | ---------------------------------------------------------- |
+| Static site        | `site/template.mjs` + `locales/{en,fr}.mjs`   | `dist/index.html` (en), `dist/fr/index.html` (fr)          |
+| Printable CV (PDF) | `PlushCV.cls` + `cv/resume_{en,fr}.tex`       | `haroune_mohammedi_cv_en.pdf`, `haroune_mohammedi_cv_fr.pdf` |
 
-## Dependencies
+The site uses CSS logical properties throughout, so the same stylesheet renders correctly for LTR (en/fr) and RTL (ar) the moment an `ar.mjs` locale is added. The PDF class loads `polyglossia` and accepts `\documentclass[english|french|arabic]{plushcv}`.
 
-1. Compiles only with **XeTeX** and required **BibTex** for compiling publications and the .bib filetype.
+## Build
 
-## Availability
+Requires Node 20+ for the site and XeLaTeX (via TeX Live or MacTeX) for the PDFs.
 
-1. OpenFonts version - [as a direct download](https://github.com/deedydas/Deedy-Resume/raw/master/OpenFonts/deedy_resume-openfont.pdf)
-2. **Overleaf**.com 
+```sh
+make site      # build the static site into dist/
+make pdf       # build both locale PDFs at repo root
+make all       # pdfs + site
+make serve     # build, then serve dist/ on http://localhost:8000
+make clean     # remove dist/ and .build/ intermediates
+```
 
-## Previews
+`make pdf-en` and `make pdf-fr` build a single locale. LaTeX intermediates land in `.build/` (gitignored); the canonical PDFs are committed at the repo root so CI doesn't need TeX Live.
 
-**Merriweather**
+## Deployment
 
-![alt tag](https://github.com/sansquoi/PlushCV/blob/main/previews/plushcv-merriweather-sample.png)
+GitHub Pages, via `.github/workflows/pages.yml`. On every push to `master` the workflow runs `node build.js` and uploads `dist/`. The Pages source must be set to "GitHub Actions".
 
-**Source Serif Pro**
+## Adding a locale
 
-![alt tag](https://github.com/sansquoi/PlushCV/blob/main/previews/plushcv-sourceserifpro-sample.png)
+1. Copy `locales/en.mjs` to `locales/<lang>.mjs`, translate, set `htmlLang` / `dir` / `ogLocale` / `cvFile`.
+2. (Optional) Copy `cv/resume_en.tex` to `cv/resume_<lang>.tex` and add a matching `make pdf-<lang>` target.
+3. `node build.js` discovers locales automatically and wires up `hreflang` + sitemap.
 
-**Inter**
+See `CLAUDE.md` for the full architecture notes, translation conventions, and the Arabic integration checklist.
 
-![alt tag](https://github.com/sansquoi/PlushCV/blob/main/previews/plushcv-inter-sample.png)
+## Credits
 
-**Office Code Pro**
-
-![alt tag](https://github.com/sansquoi/PlushCV/blob/main/previews/plushcv-officecodeprod-sample.png)
-
-**Oxygen**
-
-![alt tag](https://github.com/sansquoi/PlushCV/blob/main/previews/plushcv-oxygen-sample.png)
-
-**Prata**
-
-![alt tag](https://github.com/sansquoi/PlushCV/blob/main/previews/plushcv-prata-sample.png)
-
-**Source Sans Pro**
-
-![alt tag](https://github.com/sansquoi/PlushCV/blob/main/previews/plushcv-sourcesanspro-sample.png)
-
-**Marcellus**
-
-![alt tag](https://github.com/sansquoi/PlushCV/blob/main/previews/plushcv-marcellus-sample.png)
-
-**Abril**
-
-![alt tag](https://github.com/sansquoi/PlushCV/blob/main/previews/plushcv-abril-sample.png)
-
-## Changelog
-
-### v1.1
-
-  1. Added more font options.
-  2. Added icons for contact line, fixed alignment.
-  3. Removed "Awards".
-
-## TODO
-
-1. Add more font options.
-2. Allow for multiple pages and overflow.
-
-## Known Issues:
-
-1. Overflows if vertical limit reached.
-2. First bullet point on the second column needs a proper fix.
-
-## License
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-    
-       http://www.apache.org/licenses/LICENSE-2.0
-    
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+The PDF class is forked from [PlushCV](https://github.com/sansquoi/PlushCV) (itself a fork of [Deedy-Resume](https://github.com/deedy/Deedy-Resume)), with significant refactoring for multilingual support. Original templates are licensed under Apache 2.0 — see `LICENSE`.
