@@ -28,10 +28,10 @@ jobs:
       - uses: actions/configure-pages@v5
 
       # Locale PDFs are built locally and committed at the repo root.
-      # build.js picks them up from there and stages them into dist/.
+      # build.mjs picks them up from there and stages them into dist/.
       # Rebuild before pushing if the .tex sources changed: `make pdf`.
       - name: Build static site
-        run: node build.js
+        run: node build.mjs
 
       - uses: actions/upload-pages-artifact@v3
         with:
