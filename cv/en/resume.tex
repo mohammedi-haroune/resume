@@ -1,0 +1,178 @@
+% =============================================================================
+%   Haroune Mohammedi — Resume (English)
+%   Compile from the repo root:
+%     xelatex -output-directory=dist cv/en/resume.tex
+%   The class file (PlushCV.cls), fonts/, and icons/ are resolved relative to
+%   the current working directory at compile time.
+% =============================================================================
+
+\documentclass[english]{plushcv}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\pagestyle{fancy}
+\fancyhf{}
+\begin{document}
+
+\setlist[itemize]{leftmargin=*}
+
+% ------------------------------------------------------------------- TITLE ----
+\small{
+\namesection{Haroune}{Mohammedi}{Senior Data Engineer}{\small\contactline{Paris}{\href{https://www.github.com/mohammedi-haroune}{GitHub}}{\href{https://www.linkedin.com/in/haroune-mohammedi-3b3836170/}{LinkedIn}}{\href{mailto:mohammedi.haroun@gmail.com}{mohammedi.haroun@gmail.com}}{\href{tel:+33626850080}{0626850080}}{\href{https://haroune.me}{haroune.me}}}
+}
+
+\vspace{16pt}
+
+Specialized in large-scale distributed data pipelines on Databricks/PySpark, currently at Engie, processing 50M+ rows/day of high-frequency data, optimizing workloads (up to 90\%) and migrating legacy Oracle ETL workflows. Operates across the full project lifecycle, from functional analysis and architecture design to deployment and production support. Strong focus on understanding domain challenges and bridging the gap between technical implementation and business needs.
+
+\vspace{-6pt}
+
+% --------------------------------------------------------------- COLUMN ONE ---
+\begin{minipage}[t]{0.74\textwidth}
+
+\section{Experience}
+
+\runsubsection{Engie}
+\descript{| Senior Data Engineer }
+\hfill
+\location{Feb 2024 -- Present | Paris, France}
+\vspace{\topsep}
+\begin{tightemize}
+\sectionsep
+\item Designed and implemented large-scale data pipelines processing 50M+ rows/day of high-frequency energy consumption data (30-min intervals) on Databricks/PySpark.
+\item Migrated legacy ETL workflows from PL/SQL to PySpark on Databricks, reducing execution time from several weeks to a few hours and generating substantial compute cost savings.
+\item Optimized PySpark pipelines achieving 90\%+ performance improvement (10 hours $\rightarrow$ under 1 hour) through Spark tuning, partitioning strategies, and scalable architecture design.
+\item Led projects end-to-end: functional analysis, architecture design, development, testing, deployment (MEP), and production support (RUN).
+\item Developed strong functional expertise in the energy domain, with a genuine interest in business challenges and operational processes.
+\item Ensured data quality and reliability of production pipelines in a critical context.
+\end{tightemize}
+\sectionsep
+\sectionsep
+
+\runsubsection{Quadratic}
+\descript{| Senior Data Engineer }
+\hfill
+\location{May 2022 -- Jan 2024 | Paris, France}
+\vspace{5pt}
+\begin{tightemize}
+\sectionsep
+\item Designed and implemented a real-time blockchain data integration pipeline, synchronizing on-chain events from Web3 smart contracts into MongoDB, making blockchain data accessible to Web2 applications.
+\item Designed the MongoDB schema and data models optimized for query performance and scalability, translating raw blockchain event structures into clean, queryable documents.
+\item Defined GraphQL schema and data access patterns to expose structured contract and transaction data to frontend consumers.
+\end{tightemize}
+\sectionsep
+\sectionsep
+
+\runsubsection{BigMama Technology}
+\descript{| Senior Data Engineer }
+\hfill
+\location{Jul 2019 -- Apr 2022 | Algiers, Algeria}
+\vspace{5pt}
+\begin{tightemize}
+\sectionsep
+\item Core developer of a cloud-agnostic MLOps platform built on open standards (Docker, Kubernetes) supporting GCP, on-premise, and multi-cloud deployments.
+\item Deeply integrated MLflow for automated experiment tracking and reproducibility, and Seldon Core for scalable model serving on Kubernetes.
+\item Implemented one-click ML model packaging and deployment workflows.
+\item Evaluated, benchmarked, and integrated open-source MLOps tooling, developing deep expertise across the ML infrastructure ecosystem.
+\item Participated in architecture decisions and translated business requirements into scalable, maintainable platform features.
+\end{tightemize}
+\sectionsep
+\sectionsep
+
+\runsubsection{BigMama Technology}
+\descript{| Data Engineer }
+\hfill
+\location{Sep 2017 -- Jun 2019 | Algiers, Algeria}
+\vspace{5pt}
+\begin{tightemize}
+\sectionsep
+\item Built and deployed a real-time health monitoring platform for elderly people living alone, using Akka, Spark, Kafka, Elasticsearch, and Firebase --- with high-availability and fault tolerance as non-negotiable requirements.
+\item Designed complex distributed applications based on the actor model, contributing to architecture decisions across multiple systems.
+\end{tightemize}
+
+\section{University and Personal Projects}
+
+\runsubsection{HomeLab}
+\descript{| Proxmox, TrueNAS, Nginx, VPN}
+\hfill
+\location{2025 -- Present | Personal Project}
+
+Self-hosted personal infrastructure built on Proxmox and TrueNAS --- serving as a private cloud, a 3-2-1 backup system, and a personal sandbox for exploring new technologies including local LLM deployment.
+\sectionsep
+\sectionsep
+
+\runsubsection{Video player controlled by hand gestures}
+\descript{| Scala, Akka, Keras}
+\hfill
+\location{2018 | University Project}
+
+Trained a hand gesture detection neural network with Keras, integrating the model into a fully asynchronous, reactive application built on the Actor model with Akka.
+
+% --------------------------------------------------------------- COLUMN TWO ---
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.23\textwidth}
+
+\section{Skills}
+\sectionsep
+\location{Languages:}
+Python \textbullet{} Scala/Akka \textbullet{} SQL \textbullet{} Java \textbullet{} Shell \\
+\sectionsep
+
+\location{Data Engineering:}
+PySpark \textbullet{} Apache Spark \textbullet{} Databricks \textbullet{} Kafka \textbullet{} Elasticsearch \\
+\sectionsep
+
+\location{MLOps:}
+MLflow \textbullet{} Seldon Core \textbullet{} Jupyter \\
+\sectionsep
+
+\location{Cloud, DevOps \& Infrastructure:}
+Docker \textbullet{} Kubernetes \textbullet{} Linux \textbullet{} Proxmox \textbullet{} Gitlab CI/CD \textbullet{} AWS \textbullet{} GCP \\
+\sectionsep
+
+\location{Databases \& APIs:}
+MongoDB \textbullet{} GraphQL \textbullet{} Flask \textbullet{} FastAPI \\
+
+\sectionsep
+
+\section{Education}
+\runsubsection{Université Houari Boumediène (USTHB)}
+\sectionsep
+\sectionsep
+
+\textbf{PhD in Artificial Intelligence} \\
+\location{Sep 2019 -- Ongoing | Algeria}
+Data services management in multi-cloud environments \\
+
+\sectionsep
+\textbf{Master in Artificial Intelligence} \\
+\location{Sep 2017 -- Jun 2019 | Algeria}
+Final project: Graph-based recommender system.
+
+\sectionsep
+\textbf{Bachelor in Computer Science} \\
+\location{Sep 2014 -- Jun 2017 | Algeria}
+Final project: Web services relationship prediction using Spark in collaboration with University of Michigan, USA.
+\sectionsep
+
+\section{References}
+
+\href{https://www.linkedin.com/in/pr-youcef-aklouf-08485729/}{\textbf{Pr.\ Youcef Aklouf}}, Professor at USTHB | R\&D Manager at Renault, France \\
+\begingroup
+\setbox0=\hbox{
+\includegraphics[scale=0.1,trim={0 1cm 0cm 0cm}]{icons/main/mail.png}\hspace{0.1cm} yaklouf@yahoo.fr
+}
+\parbox{\wd0}{\box0}
+\endgroup
+
+\sectionsep
+\href{https://www.linkedin.com/in/jhadjar/}{\textbf{Jugurta Hadjar}}, CTO, BigMama Technology, Algeria \\
+\begingroup
+\setbox0=\hbox{
+\includegraphics[scale=0.1,trim={0 1cm 0cm 0cm}]{icons/main/mail.png}\hspace{0.1cm} jugurtha.hadjar@gmail.com
+}
+\parbox{\wd0}{\box0}
+\endgroup
+
+\end{minipage}
+\end{document}

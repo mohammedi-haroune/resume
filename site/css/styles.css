@@ -1,3 +1,16 @@
+/* =========================================================================
+   haroune.me — design system
+   -------------------------------------------------------------------------
+   i18n notes:
+   - Direction-sensitive properties use CSS logical equivalents
+     (margin-inline-end, inset-inline-start, text-align: start, …) so the
+     same stylesheet flips automatically when <html dir="rtl"> is set.
+   - Font stacks are declared as CSS variables and overridden per [lang=…]
+     so Arabic gets an Arabic-capable family without touching markup.
+   - Decorative directional glyphs (the → bullet, the project-card underline
+     animation origin) are flipped explicitly for RTL via :dir() / [dir=rtl].
+   ========================================================================= */
+
 *,
 *::before,
 *::after {
@@ -16,17 +29,36 @@
   --orange-dim: rgba(249, 115, 22, 0.12);
   --cyan: #22d3ee;
   --cyan-dim: rgba(34, 211, 238, 0.1);
+
+  /* Font stacks. Override per-locale via [lang=…]. */
+  --font-display: "Syne", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
+
+/* Arabic typography scaffold — fonts not loaded yet (will require additional
+   <link> tags in the template + ar.mjs locale). Listed here so RTL pages
+   inherit a sensible Arabic-first family the moment Arabic content lands. */
+[lang="ar"] {
+  --font-display: "Cairo", "Tajawal", "IBM Plex Sans Arabic", "Syne", sans-serif;
+  --font-body: "IBM Plex Sans Arabic", "Cairo", "Tajawal", "IBM Plex Sans",
+    sans-serif;
+  --font-mono: "IBM Plex Sans Arabic", "IBM Plex Mono", monospace;
+  /* Arabic text generally needs a touch more line-height for diacritics. */
+  line-height: 1.85;
+}
+
 html {
   scroll-behavior: smooth;
 }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.7;
   overflow-x: hidden;
+  text-align: start;
 }
 ::-webkit-scrollbar {
   width: 4px;
@@ -43,8 +75,7 @@ body {
 nav {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   z-index: 200;
   padding: 1.25rem 2.5rem;
   display: flex;
@@ -62,7 +93,7 @@ nav:has(.nav-links.open) {
   -webkit-backdrop-filter: none;
 }
 .nav-name {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--muted);
   letter-spacing: 0.05em;
@@ -82,9 +113,10 @@ nav.scrolled .nav-name {
   display: flex;
   gap: 2rem;
   list-style: none;
+  align-items: center;
 }
-.nav-links a {
-  font-family: "IBM Plex Mono", monospace;
+.nav-links > li > a {
+  font-family: var(--font-mono);
   font-size: 0.78rem;
   color: var(--muted);
   text-decoration: none;
@@ -92,8 +124,8 @@ nav.scrolled .nav-name {
   text-transform: uppercase;
   transition: color 0.2s;
 }
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links > li > a:hover,
+.nav-links > li > a.active {
   color: var(--orange);
 }
 .nav-links a.nav-cv {
@@ -109,6 +141,31 @@ nav.scrolled .nav-name {
   background: var(--orange-dim);
   color: var(--orange);
 }
+
+/* Language switcher */
+.nav-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.nav-lang a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.35rem;
+  border-radius: 2px;
+  transition: color 0.2s;
+}
+.nav-lang a:hover {
+  color: var(--text);
+}
+.nav-lang a.active,
+.nav-lang a[aria-current="page"] {
+  color: var(--orange);
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -160,18 +217,23 @@ nav.scrolled .nav-name {
   .nav-links {
     position: fixed;
     top: 0;
-    right: 0;
     bottom: 0;
+    inset-inline-end: 0;
     width: min(270px, 80vw);
     background: var(--surface);
-    border-left: 1px solid var(--faint);
+    border-inline-start: 1px solid var(--faint);
     flex-direction: column;
     padding: 5rem 1.75rem 2rem;
     gap: 0;
+    /* Slide in from the inline-end edge regardless of writing direction. */
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 200;
     overflow-y: auto;
+    align-items: stretch;
+  }
+  [dir="rtl"] .nav-links {
+    transform: translateX(-100%);
   }
   .nav-links.open {
     transform: translateX(0);
@@ -179,7 +241,12 @@ nav.scrolled .nav-name {
   .nav-links li {
     border-bottom: 1px solid var(--faint);
   }
-  .nav-links a {
+  .nav-links li.nav-lang {
+    border-bottom: 1px solid var(--faint);
+    padding: 0.85rem 0;
+    justify-content: flex-start;
+  }
+  .nav-links > li > a {
     display: block;
     padding: 1rem 0;
     font-size: 0.9rem;
@@ -216,7 +283,7 @@ nav.scrolled .nav-name {
   text-align: center;
 }
 .hero-label {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--orange);
   letter-spacing: 0.15em;
@@ -242,7 +309,7 @@ nav.scrolled .nav-name {
   margin-bottom: 2rem;
 }
 .hero-role {
-  font-family: "Syne", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(2.4rem, 11vw, 5.5rem);
   line-height: 1;
@@ -259,7 +326,7 @@ nav.scrolled .nav-name {
   margin-bottom: 2.5rem;
 }
 .hero-greeting {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
   font-size: 1.15rem;
   color: rgba(238, 238, 245, 0.7);
@@ -271,7 +338,7 @@ nav.scrolled .nav-name {
   gap: 0.5rem;
 }
 .hero-name-big {
-  font-family: "Syne", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(1.7rem, 3.4vw, 2.2rem);
   color: var(--text);
@@ -286,7 +353,7 @@ nav.scrolled .nav-name {
   flex-wrap: wrap;
 }
 .hero-contact-label {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
   color: var(--muted);
   letter-spacing: 0.04em;
@@ -321,7 +388,7 @@ nav.scrolled .nav-name {
   fill: currentColor;
 }
 .hero-tagline {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(1.05rem, 2.1vw, 1.3rem);
   font-weight: 400;
   color: rgba(238, 238, 245, 0.78);
@@ -351,7 +418,7 @@ nav.scrolled .nav-name {
   margin-bottom: 2.25rem;
 }
 .stack-pill {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   background: var(--elevated);
   color: rgba(238, 238, 245, 0.55);
@@ -383,7 +450,7 @@ nav.scrolled .nav-name {
 .btn {
   display: inline-block;
   padding: 0.75rem 1.75rem;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.85rem;
   letter-spacing: 0.05em;
   text-decoration: none;
@@ -428,7 +495,7 @@ nav.scrolled .nav-name {
 .scroll-hint {
   position: absolute;
   bottom: 2rem;
-  right: 2.5rem;
+  inset-inline-end: 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -466,12 +533,15 @@ nav.scrolled .nav-name {
   }
 }
 .scroll-label {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.58rem;
   color: var(--muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  writing-mode: vertical-rl;
+  /* sideways-rl preserves "reads top-to-bottom" intent in both LTR and RTL.
+     TODO(ar): verify rendering with a long Arabic word; may need writing-mode
+     override on [dir="rtl"]. */
+  writing-mode: sideways-rl;
 }
 
 /* SECTIONS */
@@ -483,7 +553,7 @@ section {
   margin: 0 auto;
 }
 .section-label {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--orange);
   letter-spacing: 0.15em;
@@ -501,7 +571,7 @@ section {
   background: var(--orange);
 }
 .section-title {
-  font-family: "Syne", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.1;
@@ -528,12 +598,12 @@ section {
 /* EXPERIENCE */
 .timeline {
   position: relative;
-  padding-left: 2rem;
+  padding-inline-start: 2rem;
 }
 .timeline::before {
   content: "";
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   top: 0.5rem;
   bottom: 0.5rem;
   width: 1px;
@@ -548,7 +618,7 @@ section {
 }
 .tl-dot {
   position: absolute;
-  left: -2rem;
+  inset-inline-start: -2rem;
   top: 0.42rem;
   width: 10px;
   height: 10px;
@@ -558,14 +628,18 @@ section {
   transition:
     border-color 0.3s,
     background 0.3s;
+  /* Pull the dot 4px toward the inline-start so it overlaps the timeline rule. */
   transform: translateX(-4px);
+}
+[dir="rtl"] .tl-dot {
+  transform: translateX(4px);
 }
 .tl-item:hover .tl-dot {
   border-color: var(--orange);
   background: var(--orange);
 }
 .tl-meta {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--muted);
   letter-spacing: 0.05em;
@@ -575,7 +649,7 @@ section {
   color: var(--cyan);
 }
 .tl-role {
-  font-family: "Syne", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.3rem;
   margin-bottom: 0.15rem;
@@ -598,7 +672,7 @@ section {
 }
 .tl-bullets li {
   position: relative;
-  padding-left: 1.25rem;
+  padding-inline-start: 1.25rem;
   color: rgba(238, 238, 245, 0.75);
   font-size: 1rem;
   line-height: 1.75;
@@ -607,20 +681,25 @@ section {
 .tl-bullets li::before {
   content: "→";
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   color: var(--orange);
   font-size: 0.8rem;
   top: 0.08rem;
 }
+/* Arrow points the way the text reads — flip for RTL. */
+[dir="rtl"] .tl-bullets li::before {
+  content: "←";
+}
 .tl-tag {
   display: inline-block;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   background: var(--orange-dim);
   color: var(--orange);
   padding: 0.15rem 0.5rem;
   border-radius: 2px;
-  margin: 0.6rem 0.25rem 0 0;
+  margin-block-start: 0.6rem;
+  margin-inline-end: 0.25rem;
 }
 
 /* SKILLS */
@@ -646,7 +725,7 @@ section {
   transform: translateY(-2px);
 }
 .skill-domain {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--orange);
   letter-spacing: 0.12em;
@@ -666,7 +745,7 @@ section {
   gap: 0.32rem;
 }
 .skill-tag {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   background: var(--faint);
   color: rgba(238, 238, 245, 0.7);
@@ -698,13 +777,18 @@ section {
   content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  inset-inline: 0;
   height: 2px;
   background: var(--orange);
   transform: scaleX(0);
+  /* transform-origin must point to the inline-start edge so the underline
+     reveals in the reading direction. CSS Values 4 logical keywords aren't
+     universally supported yet, hence the [dir] override. */
   transform-origin: left;
   transition: transform 0.35s;
+}
+[dir="rtl"] .project-card::before {
+  transform-origin: right;
 }
 .project-card:hover {
   border-color: rgba(249, 115, 22, 0.3);
@@ -713,13 +797,13 @@ section {
   transform: scaleX(1);
 }
 .project-year {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--muted);
   margin-bottom: 0.75rem;
 }
 .project-name {
-  font-family: "Syne", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.3rem;
   margin-bottom: 0.4rem;
@@ -728,13 +812,13 @@ section {
   margin-bottom: 1rem;
 }
 .project-stack span {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   background: var(--cyan-dim);
   color: var(--cyan);
   padding: 0.15rem 0.5rem;
   border-radius: 2px;
-  margin-right: 0.32rem;
+  margin-inline-end: 0.32rem;
 }
 .project-desc {
   font-size: 0.98rem;
@@ -763,10 +847,16 @@ section {
   padding-bottom: 0;
 }
 .edu-degree {
-  font-family: "Syne", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.1rem;
   margin-bottom: 0.25rem;
+}
+.edu-degree-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 400;
 }
 .edu-school {
   font-size: 0.98rem;
@@ -778,7 +868,7 @@ section {
   color: rgba(238, 238, 245, 0.6);
 }
 .edu-period {
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--cyan);
   white-space: nowrap;
@@ -789,12 +879,18 @@ section {
 .contact-wrapper {
   text-align: center;
 }
+.contact-label-centered {
+  justify-content: center;
+}
 .contact-title {
-  font-family: "Syne", sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   line-height: 1;
   margin-bottom: 1.5rem;
+}
+.contact-title-accent {
+  color: var(--orange);
 }
 .contact-sub {
   font-size: 1.12rem;
@@ -813,7 +909,7 @@ section {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--muted);
   text-decoration: none;
@@ -835,7 +931,7 @@ section {
 footer {
   text-align: center;
   padding: 1.75rem;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--muted);
   border-top: 1px solid var(--faint);
@@ -866,10 +962,10 @@ footer {
     gap: 0.9rem;
   }
   .timeline {
-    padding-left: 1.25rem;
+    padding-inline-start: 1.25rem;
   }
   .tl-dot {
-    left: -1.25rem;
+    inset-inline-start: -1.25rem;
   }
   .projects-grid {
     grid-template-columns: 1fr;

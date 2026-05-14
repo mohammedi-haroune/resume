@@ -22,11 +22,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
       - uses: actions/configure-pages@v5
-      - name: Stage PDF resume into site
-        run: cp haroune_mohammedi_resume.pdf site/
+
+      # Locale PDFs are built locally and committed at the repo root.
+      # build.js picks them up from there and stages them into dist/.
+      # Rebuild before pushing if the .tex sources changed: `make pdf`.
+      - name: Build static site
+        run: node build.js
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./site
+          path: ./dist
       - id: deployment
         uses: actions/deploy-pages@v4
